@@ -401,7 +401,8 @@ impl Library {
                 .unwrap_or(&album.artists[0]);
             let album_title = album.title.strip_prefix("The ").unwrap_or(&album.title);
             format!(
-                "{}{}{}",
+                "{}{}{}{}",
+                album.added_at.unwrap_or(chrono::offset::Utc::now()).format("%Y-%m-%d %H:%M:%S"),
                 album_artist.to_lowercase(),
                 album.year,
                 album_title.to_lowercase()
